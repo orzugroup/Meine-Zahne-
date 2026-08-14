@@ -1,5 +1,5 @@
 const bookingForm = document.getElementById('bookingForm');
-const ORZU_WEBHOOK_URL = 'https://www.orzux.com/api/webhooks/website-forms/e225364e4b89ee1d8089996b8fe3fd9dcf03d3fead53d0d6';
+const ORZU_WEBHOOK_URL = 'https://www.orzux.com/api/webhooks/website-forms/b22c3054b6e8951ff70788c6c0d859a208b5066df27e96f5';
 
 if (bookingForm) {
   bookingForm.addEventListener('submit', async (event) => {
