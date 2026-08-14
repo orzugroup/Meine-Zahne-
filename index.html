@@ -318,6 +318,10 @@
 
             <div class="form-row">
               <label>
+                <span>E-Mail</span>
+                <input type="email" name="email" placeholder="ihre@email.de" required />
+              </label>
+              <label>
                 <span>Leistung</span>
                 <select name="service" required>
                   <option value="">Leistung auswählen</option>
@@ -329,9 +333,25 @@
                   <option>Orthodontie</option>
                 </select>
               </label>
+            </div>
+
+            <div class="form-row">
               <label>
                 <span>Datum</span>
                 <input type="date" name="date" required />
+              </label>
+              <label>
+                <span>Zeit</span>
+                <select name="time" required>
+                  <option value="">Uhrzeit wählen</option>
+                  <option>09:00</option>
+                  <option>10:00</option>
+                  <option>11:30</option>
+                  <option>13:00</option>
+                  <option>15:00</option>
+                  <option>17:30</option>
+                  <option>19:00</option>
+                </select>
               </label>
             </div>
 

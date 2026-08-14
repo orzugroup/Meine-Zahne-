@@ -6,12 +6,27 @@ if (bookingForm) {
     event.preventDefault();
 
     const formData = new FormData(bookingForm);
+    const name = formData.get('name')?.toString().trim() || '';
+    const email = formData.get('email')?.toString().trim() || '';
+    const phone = formData.get('phone')?.toString().trim() || '';
+    const service = formData.get('service')?.toString().trim() || '';
+    const date = formData.get('date')?.toString().trim() || '';
+    const time = formData.get('time')?.toString().trim() || '';
+    const message = formData.get('message')?.toString().trim() || '';
+
+    if (!name || !email || !phone || !service || !date || !time) {
+      window.alert('Bitte füllen Sie alle Pflichtfelder aus.');
+      return;
+    }
+
     const payload = new URLSearchParams({
-      name: formData.get('name')?.toString().trim() || '',
-      phone: formData.get('phone')?.toString().trim() || '',
-      service: formData.get('service')?.toString().trim() || '',
-      date: formData.get('date')?.toString().trim() || '',
-      message: formData.get('message')?.toString().trim() || ''
+      name,
+      email,
+      phone,
+      service,
+      date,
+      time,
+      message
     });
 
     try {
@@ -27,13 +42,11 @@ if (bookingForm) {
         throw new Error(`HTTP ${response.status}`);
       }
 
-      const name = payload.get('name') || 'Patient';
-      const service = payload.get('service') || 'gewählte Leistung';
-      window.alert(`Vielen Dank, ${name}! Ihre Anfrage für ${service} wurde erfolgreich gesendet.`);
+      window.alert(`Vielen Dank, ${name}! Ihr Termin für ${service} am ${date} um ${time} wurde erfolgreich gebucht.`);
       bookingForm.reset();
     } catch (error) {
       console.error('Orzu webhook error:', error);
-      window.alert('Die Anfrage konnte nicht gesendet werden. Bitte kontaktieren Sie uns telefonisch.');
+      window.alert('Die Anfrage konnte nicht gesendet werden. Bitte senden Sie uns eine E-Mail oder rufen Sie uns an.');
     }
   });
 }
